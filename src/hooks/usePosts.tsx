@@ -3,6 +3,7 @@ import { Database } from '@/types/database.types';
 import { createClient } from '@/lib/supabase/client';
 import { Post } from '@/types/Post';
 import { User } from '@supabase/supabase-js';
+import { v4 as uuidv4 } from 'uuid';
 
 const useGetPosts = () => {
   // Retrieve Supabase client
@@ -23,6 +24,8 @@ const useGetPosts = () => {
     };
   }, []);
 
+  const id: string = uuidv4();
+
   // Initialize posts state
   const [posts, setPosts] = useState<Post[]>([]);
 
@@ -42,6 +45,7 @@ const useGetPosts = () => {
     const { data, error } = await supabase
       .from('posts')
       .insert({
+        id,
         title,
         body,
         author: user.id,
