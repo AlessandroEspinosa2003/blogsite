@@ -5,7 +5,6 @@ import HeaderPublic from '@/components/HeaderPublic';
 const Home = () => {
   return (
     <>
-      {/* see previous step */}
       <main>
         <HeaderPublic />
         <PostListPublic />
